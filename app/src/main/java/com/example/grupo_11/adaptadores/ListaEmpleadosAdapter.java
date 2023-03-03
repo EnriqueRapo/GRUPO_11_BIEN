@@ -1,5 +1,7 @@
 package com.example.grupo_11.adaptadores;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.grupo_11.R;
 import com.example.grupo_11.entidades.Empleados;
+import com.example.grupo_11.verEmpleados;
 
 import org.w3c.dom.Text;
 
@@ -83,6 +86,17 @@ public class ListaEmpleadosAdapter extends RecyclerView.Adapter<ListaEmpleadosAd
             viewNombre = itemView.findViewById(R.id.viewNombre);
             viewApellidos = itemView.findViewById(R.id.viewApellidos);
             viewDepartamento = itemView.findViewById(R.id.viewDepartamento);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                   Context context = view.getContext();
+                    Intent intent = new Intent(context, verEmpleados.class);
+
+                    intent.putExtra("id", listaEmpleados.get(getAdapterPosition()).getId());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

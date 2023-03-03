@@ -13,14 +13,14 @@
         android:theme="@style/Theme.GRUPO_11"
         tools:targetApi="31">
 
-        <activity android:name=".NuevoActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".NuevoActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="andoid.support.PARENT_ACTIVITY"
-            android:value=".MainActivity"/>
-            />
-
+            android:value=".MainActivity" />
 
         <activity
             android:name=".MainActivity"
@@ -34,6 +34,16 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+        </activity>
+
+        <activity
+            android:name=".verEmpleados"
+            android:exported="false"
+        android:parentActivityName=".MainActivity" >
+
+        <meta-data
+            android:name="andoid.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
         </activity>
     </application>
 

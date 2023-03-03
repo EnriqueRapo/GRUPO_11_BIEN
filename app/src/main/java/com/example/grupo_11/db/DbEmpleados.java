@@ -63,15 +63,17 @@ public class DbEmpleados extends DbHelper {
         if(cursorEmpleados.moveToFirst()){
             do{
                 empleados = new Empleados();
-                empleados.setDNI(cursorEmpleados.getString(0));
-                empleados.setNombre(cursorEmpleados.getString(1));
-                empleados.setApellidos(cursorEmpleados.getString(2));
-                empleados.setTelefono(cursorEmpleados.getString(3));
-                empleados.setDepartamento(cursorEmpleados.getString(4));
-                empleados.setLocalidad(cursorEmpleados.getString(5));
-                empleados.setDireccion(cursorEmpleados.getString(6));
-                empleados.setEmail(cursorEmpleados.getString(7));
-                empleados.setHorario(cursorEmpleados.getString(8));
+
+                empleados.setId(cursorEmpleados.getInt(0));
+                empleados.setDNI(cursorEmpleados.getString(1));
+                empleados.setNombre(cursorEmpleados.getString(2));
+                empleados.setApellidos(cursorEmpleados.getString(3));
+                empleados.setTelefono(cursorEmpleados.getString(4));
+                empleados.setDepartamento(cursorEmpleados.getString(5));
+                empleados.setLocalidad(cursorEmpleados.getString(6));
+                empleados.setDireccion(cursorEmpleados.getString(7));
+                empleados.setEmail(cursorEmpleados.getString(8));
+                empleados.setHorario(cursorEmpleados.getString(9));
 
                 listaEmpleados.add(empleados);
             } while (cursorEmpleados.moveToNext());
@@ -81,4 +83,34 @@ public class DbEmpleados extends DbHelper {
         return listaEmpleados;
     }
 
+    public Empleados verEmpleados(int id){
+
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Empleados empleados = null;
+        Cursor cursorEmpleados = null;
+
+        cursorEmpleados = db.rawQuery("SELECT * FROM " + TABLE_EMPLEADOS + " WHERE id = " + id + " LIMIT 1", null);
+
+        if(cursorEmpleados.moveToFirst()){
+
+                empleados = new Empleados();
+                empleados.setId(cursorEmpleados.getInt(0));
+                empleados.setDNI(cursorEmpleados.getString(1));
+                empleados.setNombre(cursorEmpleados.getString(2));
+                empleados.setApellidos(cursorEmpleados.getString(3));
+                empleados.setTelefono(cursorEmpleados.getString(4));
+                empleados.setDepartamento(cursorEmpleados.getString(5));
+                empleados.setLocalidad(cursorEmpleados.getString(6));
+                empleados.setDireccion(cursorEmpleados.getString(7));
+                empleados.setEmail(cursorEmpleados.getString(8));
+                empleados.setHorario(cursorEmpleados.getString(9));
+
+
+            }
+
+
+        cursorEmpleados.close();
+        return empleados;
+    }
 }

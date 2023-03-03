@@ -12,6 +12,8 @@ public class Empleados {
     private String Email;
     private String horario;
 
+    private Integer Id;
+
 
     public String getDNI() {
         return DNI;
@@ -19,6 +21,14 @@ public class Empleados {
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer Id) {
+        this.Id = Id;
     }
 
     public String getNombre() {
